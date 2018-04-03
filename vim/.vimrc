@@ -1,4 +1,3 @@
-set nocompatible
 syntax on
 filetype off
 
@@ -25,6 +24,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'ajh17/VimCompletesMe'
 Plug 'othree/yajs.vim', {'for': 'javascript'}
 Plug 'othree/es.next.syntax.vim', {'for': 'javascript'}
+Plug 'pearofducks/ansible-vim'
 
 call plug#end()
 
@@ -36,6 +36,9 @@ let g:neocomplcache_enable_at_startup = 1
 " vim javascript
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
+
+" ctrlp ignore folders
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -60,6 +63,7 @@ set number
 set vb
 set smartindent
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=235 gui=NONE guifg=NONE guibg=NONE
+set clipboard=unnamed
 
 " Auto indent pasted text
 nnoremap p p=`]<C-o>
@@ -143,4 +147,8 @@ map <leader>y :call system('xclip -selection clipboard', @0)<CR>  " move last ya
 map <leader>b :CtrlPBuffer<cr>
 map <leader>t :CtrlPTag<cr>
 
-colorscheme malokai
+autocmd BufNewFile,BufRead *.yaml.hbs   set syntax=ansible
+
+syntax enable
+set background=dark
+colorscheme solarized
