@@ -15,18 +15,28 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tmux-plugins/vim-tmux'
 Plugin 'tpope/vim-pathogen'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'rust-lang/rust.vim'
 Plugin 'isRuslan/vim-es6'
+Plugin 'leafgarland/typescript-vim'
 
 call plug#begin('~/.vim/plugged')
 
 Plug 'pangloss/vim-javascript'
-Plug 'ajh17/VimCompletesMe'
 Plug 'othree/yajs.vim', {'for': 'javascript'}
 Plug 'othree/es.next.syntax.vim', {'for': 'javascript'}
 Plug 'pearofducks/ansible-vim'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+Plug 'w0rp/ale'
+Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 
 call plug#end()
+"ale fixers
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\   'typescript': ['prettier', 'tslint'],
+\}
+let g:ale_fix_on_save = 1
 
 " Status bar plugin (vim-airline)
 let g:airline_left_sep = ''
@@ -63,8 +73,9 @@ set number
 set vb
 set smartindent
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=235 gui=NONE guifg=NONE guibg=NONE
-set clipboard=unnamed
+set clipboard=unnamed,unnamedplus
 
+"set term=screen-256color
 " Auto indent pasted text
 nnoremap p p=`]<C-o>
 nnoremap P P=`]<C-o>
@@ -146,9 +157,14 @@ map <leader>x :tabnext<CR>         " move to next tab
 map <leader>y :call system('xclip -selection clipboard', @0)<CR>  " move last yank selection to xclip
 map <leader>b :CtrlPBuffer<cr>
 map <leader>t :CtrlPTag<cr>
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 autocmd BufNewFile,BufRead *.yaml.hbs   set syntax=ansible
 
 syntax enable
 set background=dark
+" solarized options
 colorscheme solarized
