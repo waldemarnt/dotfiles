@@ -16,7 +16,7 @@ Plugin 'tmux-plugins/vim-tmux'
 Plugin 'tpope/vim-pathogen'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'isRuslan/vim-es6'
-Plugin 'leafgarland/typescript-vim'
+"Plugin 'leafgarland/typescript-vim'
 
 call plug#begin('~/.vim/plugged')
 
@@ -25,9 +25,10 @@ Plug 'othree/yajs.vim', {'for': 'javascript'}
 Plug 'othree/es.next.syntax.vim', {'for': 'javascript'}
 Plug 'pearofducks/ansible-vim'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+"Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'w0rp/ale'
 Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
+Plug 'janko/vim-test'
 
 call plug#end()
 "ale fixers
@@ -37,6 +38,9 @@ let g:ale_fixers = {
 \   'typescript': ['prettier', 'tslint'],
 \}
 let g:ale_fix_on_save = 1
+
+" vim-test preserve output screen
+let g:test#preserve_screen = 1
 
 " Status bar plugin (vim-airline)
 let g:airline_left_sep = ''
