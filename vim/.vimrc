@@ -161,6 +161,8 @@ map <leader>x :tabnext<CR>         " move to next tab
 map <leader>y :call system('xclip -selection clipboard', @0)<CR>  " move last yank selection to xclip
 map <leader>b :CtrlPBuffer<cr>
 map <leader>t :CtrlPTag<cr>
+nmap <silent> k :call CocAction('doHover')<CR>
+"autocmd CursorHold * silent call CocActionAsync('doHover')
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
