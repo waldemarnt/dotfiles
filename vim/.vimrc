@@ -4,11 +4,13 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+"Themes
 Plugin 'bling/vim-airline'
+
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'erickzanardo/vim-xclip'
 Plugin 'ervandew/supertab'
-Plugin 'kien/ctrlp.vim'
+"Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'terryma/vim-multiple-cursors'
@@ -16,28 +18,33 @@ Plugin 'tmux-plugins/vim-tmux'
 Plugin 'tpope/vim-pathogen'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'isRuslan/vim-es6'
-"Plugin 'leafgarland/typescript-vim'
 
 call plug#begin('~/.vim/plugged')
+"Themes
+Plug 'vim-airline/vim-airline-themes'
+"Gruvbox theme
+Plug 'morhetz/gruvbox'
 
 Plug 'pangloss/vim-javascript'
 Plug 'othree/yajs.vim', {'for': 'javascript'}
 Plug 'othree/es.next.syntax.vim', {'for': 'javascript'}
 Plug 'pearofducks/ansible-vim'
 Plug 'HerringtonDarkholme/yats.vim'
-"Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-Plug 'w0rp/ale'
+
 Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 Plug 'janko/vim-test'
 
+"Syntax format for jsx
+Plug 'maxmellon/vim-jsx-pretty'
+
+"Syntax support for graphql
+Plug 'jparise/vim-graphql'
+
+"Search
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+
 call plug#end()
-"ale fixers
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint'],
-\   'typescript': ['prettier', 'tslint'],
-\}
-let g:ale_fix_on_save = 1
 
 " vim-test preserve output screen
 let g:test#preserve_screen = 1
@@ -142,6 +149,7 @@ let NERDTreeIgnore=['\.swp$', '\.pyc$']
 
 " Short cuts:
 let mapleader=","
+map <C-p> :Files<CR>
 map <C-]> :NERDTreeToggle<CR>
 map <C-F> :NERDTreeFind<CR>         " Open NERDTree and focus on current file
 map <F5> :e!<CR>                    " force reload current file
@@ -170,7 +178,12 @@ nmap <silent> gr <Plug>(coc-references)
 
 autocmd BufNewFile,BufRead *.yaml.hbs   set syntax=ansible
 
+"Gruvbox config
+"let g:gruvbox_contrast_dark='soft'
+
 syntax enable
 set background=dark
 " solarized options
 colorscheme solarized
+"colorscheme gruvbox
+let g:airline_theme='bubblegum'
