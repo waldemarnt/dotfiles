@@ -1,29 +1,38 @@
 syntax on
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+"set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#begin()
 
 "Themes
-Plugin 'bling/vim-airline'
+"Plugin 'bling/vim-airline'
 
-Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'erickzanardo/vim-xclip'
-Plugin 'ervandew/supertab'
-"Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tmux-plugins/vim-tmux'
-Plugin 'tpope/vim-pathogen'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'isRuslan/vim-es6'
+"Plug 'bronson/vim-trailing-whitespace'
+"Plugin 'erickzanardo/vim-xclip'
+"Plugin 'ervandew/supertab'
+"Plugin 'scrooloose/nerdcommenter'
+"Plugin 'scrooloose/nerdtree'
+"Plugin 'terryma/vim-multiple-cursors'
+"Plugin 'tmux-plugins/vim-tmux'
+"Plugin 'tpope/vim-pathogen'
+"Plugin 'tpope/vim-unimpaired'
+"Plugin 'isRuslan/vim-es6'
 
 call plug#begin('~/.vim/plugged')
+"Imported ones
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'erickzanardo/vim-xclip'
+Plug 'ervandew/supertab'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'tpope/vim-unimpaired'
+Plug 'isRuslan/vim-es6'
+Plug 'bling/vim-airline'
+
 "Themes
 Plug 'vim-airline/vim-airline-themes'
-"Gruvbox theme
-Plug 'morhetz/gruvbox'
 
 Plug 'pangloss/vim-javascript'
 Plug 'othree/yajs.vim', {'for': 'javascript'}
@@ -32,7 +41,6 @@ Plug 'pearofducks/ansible-vim'
 Plug 'HerringtonDarkholme/yats.vim'
 
 Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
-Plug 'janko/vim-test'
 
 "Syntax format for jsx
 Plug 'maxmellon/vim-jsx-pretty'
@@ -43,6 +51,13 @@ Plug 'jparise/vim-graphql'
 "Search
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+
+"Onedark theme
+Plug 'joshdick/onedark.vim'
+
+Plug 'ryanoasis/vim-devicons'
+
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
@@ -61,15 +76,14 @@ let g:javascript_plugin_ngdoc = 1
 " ctrlp ignore folders
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
-call vundle#end()            " required
+"call vundle#end()            " required
 filetype plugin indent on    " required
 
-call pathogen#infect()
+"call pathogen#infect()
 
 " Few configurations:
 set hlsearch " Highlight search results
-set encoding=utf8
-set background=dark
+set encoding=UTF-8
 set ffs=unix,dos,mac
 set modeline
 set autoindent
@@ -149,7 +163,7 @@ let NERDTreeIgnore=['\.swp$', '\.pyc$']
 
 " Short cuts:
 let mapleader=","
-map <C-p> :Files<CR>
+map ; :Files<CR>
 map <C-]> :NERDTreeToggle<CR>
 map <C-F> :NERDTreeFind<CR>         " Open NERDTree and focus on current file
 map <F5> :e!<CR>                    " force reload current file
@@ -178,12 +192,47 @@ nmap <silent> gr <Plug>(coc-references)
 
 autocmd BufNewFile,BufRead *.yaml.hbs   set syntax=ansible
 
-"Gruvbox config
-"let g:gruvbox_contrast_dark='soft'
+set t_Co=256
 
-syntax enable
+if exists('$TMUX')
+  " Colors in tmux
+  let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
+endif
+
 set background=dark
-" solarized options
-colorscheme solarized
-"colorscheme gruvbox
-let g:airline_theme='bubblegum'
+let g:airline_theme='onedark'
+
+"Onedark theme
+let g:onedark_termcolors=256
+let g:onedark_terminal_italics=1
+let g:onedark_hide_endofbuffer=1
+let g:onedark_color_overrides = {
+      \ "purple": { "gui": "#56B6C2", "cterm": "170", "cterm16": "5" }
+      \}
+syntax enable
+"colorscheme night-owl
+colorscheme onedark
+
+set guifont=FiraCode_Nerd_Font:h11
+let g:airline_powerline_fonts = 1
+
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
