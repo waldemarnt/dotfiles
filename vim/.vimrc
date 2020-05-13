@@ -1,23 +1,6 @@
 syntax on
 filetype off
 
-"set rtp+=~/.vim/bundle/Vundle.vim
-"call vundle#begin()
-
-"Themes
-"Plugin 'bling/vim-airline'
-
-"Plug 'bronson/vim-trailing-whitespace'
-"Plugin 'erickzanardo/vim-xclip'
-"Plugin 'ervandew/supertab'
-"Plugin 'scrooloose/nerdcommenter'
-"Plugin 'scrooloose/nerdtree'
-"Plugin 'terryma/vim-multiple-cursors'
-"Plugin 'tmux-plugins/vim-tmux'
-"Plugin 'tpope/vim-pathogen'
-"Plugin 'tpope/vim-unimpaired'
-"Plugin 'isRuslan/vim-es6'
-
 call plug#begin('~/.vim/plugged')
 "Imported ones
 Plug 'bronson/vim-trailing-whitespace'
@@ -60,6 +43,16 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
 
 call plug#end()
+
+" coc.vim config
+set hidden
+set cmdheight=2
+set updatetime=300
+set shortmess+=c
+set signcolumn=yes
+autocmd CursorHold * silent call CocActionAsync('highlight')
+" end coc.vim config
+
 
 " vim-test preserve output screen
 let g:test#preserve_screen = 1
@@ -211,7 +204,6 @@ let g:onedark_color_overrides = {
       \ "purple": { "gui": "#56B6C2", "cterm": "170", "cterm16": "5" }
       \}
 syntax enable
-"colorscheme night-owl
 colorscheme onedark
 
 set guifont=FiraCode_Nerd_Font:h11
@@ -236,3 +228,4 @@ if (empty($TMUX))
     set termguicolors
   endif
 endif
+
