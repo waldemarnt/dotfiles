@@ -44,6 +44,19 @@ Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
+
+" Status bar plugin (vim-airline)
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+" vim javascript
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+
+" ctrlp ignore folders
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
+filetype plugin indent on    " required
+
 " coc.vim config
 set hidden
 set cmdheight=2
@@ -52,27 +65,6 @@ set shortmess+=c
 set signcolumn=yes
 autocmd CursorHold * silent call CocActionAsync('highlight')
 " end coc.vim config
-
-
-" vim-test preserve output screen
-let g:test#preserve_screen = 1
-
-" Status bar plugin (vim-airline)
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-" neocomplcache
-let g:neocomplcache_enable_at_startup = 1
-" vim javascript
-let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_ngdoc = 1
-
-" ctrlp ignore folders
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-
-"call vundle#end()            " required
-filetype plugin indent on    " required
-
-"call pathogen#infect()
 
 " Few configurations:
 set hlsearch " Highlight search results
@@ -93,7 +85,6 @@ set smartindent
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=235 gui=NONE guifg=NONE guibg=NONE
 set clipboard=unnamed,unnamedplus
 
-"set term=screen-256color
 " Auto indent pasted text
 nnoremap p p=`]<C-o>
 nnoremap P P=`]<C-o>
@@ -103,9 +94,6 @@ set list listchars=tab:\ \ ,trail:·
 
 set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points
-" ============ you complete me ==========
-let g:ycm_autoclose_preview_window_after_completion=1
-
 " ================ Folds ============================
 
 set foldmethod=indent   "fold based on indent
