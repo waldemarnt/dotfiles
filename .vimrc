@@ -17,11 +17,11 @@ Plug 'bling/vim-airline'
 "Themes
 Plug 'vim-airline/vim-airline-themes'
 
-Plug 'pangloss/vim-javascript'
+"Plug 'pangloss/vim-javascript'
 Plug 'othree/yajs.vim', {'for': 'javascript'}
 Plug 'othree/es.next.syntax.vim', {'for': 'javascript'}
 Plug 'pearofducks/ansible-vim'
-Plug 'HerringtonDarkholme/yats.vim'
+"Plug 'HerringtonDarkholme/yats.vim'
 
 Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 
@@ -164,6 +164,7 @@ map <leader>x :tabnext<CR>         " move to next tab
 map <leader>y :call system('xclip -selection clipboard', @0)<CR>  " move last yank selection to xclip
 map <leader>b :CtrlPBuffer<cr>
 map <leader>t :CtrlPTag<cr>
+nmap <ESC> :call coc#util#float_hide() <CR>
 nmap <silent> k :call CocAction('doHover')<CR>
 "autocmd CursorHold * silent call CocActionAsync('doHover')
 nmap <silent> gd <Plug>(coc-definition)
