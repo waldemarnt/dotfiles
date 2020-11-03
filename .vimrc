@@ -182,7 +182,7 @@ if exists('$TMUX')
   let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-set background=dark
+"set background=dark
 let g:airline_theme='onedark'
 
 "Onedark theme
