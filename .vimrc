@@ -55,6 +55,9 @@ let g:javascript_plugin_ngdoc = 1
 " ctrlp ignore folders
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
+" fzf stays in the screen instead of in a floating window
+"let g:fzf_layout = { 'down': '~40%' }
+
 filetype plugin indent on    " required
 
 " coc.vim config
