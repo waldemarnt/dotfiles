@@ -17,11 +17,10 @@ Plug 'bling/vim-airline'
 "Themes
 Plug 'vim-airline/vim-airline-themes'
 
-"Plug 'pangloss/vim-javascript'
-Plug 'othree/yajs.vim', {'for': 'javascript'}
-Plug 'othree/es.next.syntax.vim', {'for': 'javascript'}
-Plug 'pearofducks/ansible-vim'
-"Plug 'HerringtonDarkholme/yats.vim'
+"delete if useless
+"Plug 'othree/yajs.vim', {'for': 'javascript'}
+"Plug 'othree/es.next.syntax.vim', {'for': 'javascript'}
+"Plug 'pearofducks/ansible-vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -89,8 +88,7 @@ highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=235 gui=NONE guif
 set clipboard=unnamed,unnamedplus
 
 " Auto indent pasted text
-nnoremap p p=`]<C-o>
-nnoremap P P=`]<C-o>
+"nnoremap p p=`]<C-o>
 
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
