@@ -21,7 +21,6 @@ Plug 'joshdick/onedark.vim'
 Plug 'kyazdani42/nvim-tree.lua', {'tag': 'nightly'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
-
 call plug#end()
 
 
