@@ -111,7 +111,7 @@ set nowb
 " Short cuts:
 let mapleader=","
 map ; :Files<CR>
-map <C-[> :NvimTreeFocus<CR>
+map <C-[> :NvimTreeToggle<CR>
 map <F5> :e!<CR>                    " force reload current file
 map <leader>W :w<CR>
 map <leader>w :wincmd k<CR>        " go window up
