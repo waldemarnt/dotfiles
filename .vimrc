@@ -5,36 +5,21 @@ call plug#begin('~/.vim/plugged')
 "Imported ones
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'erickzanardo/vim-xclip'
-Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tpope/vim-unimpaired'
 Plug 'isRuslan/vim-es6'
 Plug 'bling/vim-airline'
-
-"Themes
 Plug 'vim-airline/vim-airline-themes'
-
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-"Syntax format for jsx
 Plug 'maxmellon/vim-jsx-pretty'
-
-"Syntax support for graphql
 Plug 'jparise/vim-graphql'
-
-"Search
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-
-"Onedark theme
 Plug 'joshdick/onedark.vim'
-
 Plug 'kyazdani42/nvim-tree.lua'
-
 Plug 'ryanoasis/vim-devicons'
-
 Plug 'sheerun/vim-polyglot'
 
 call plug#end()
@@ -43,12 +28,6 @@ call plug#end()
 " Status bar plugin (vim-airline)
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
-" vim javascript
-let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_ngdoc = 1
-
-" ctrlp ignore folders
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 " fzf stays in the screen instead of in a floating window
 "let g:fzf_layout = { 'down': '~40%' }
@@ -82,9 +61,6 @@ set vb
 set smartindent
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=235 gui=NONE guifg=NONE guibg=NONE
 set clipboard=unnamed,unnamedplus
-
-" Auto indent pasted text
-"nnoremap p p=`]<C-o>
 
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
@@ -137,7 +113,6 @@ let mapleader=","
 map ; :Files<CR>
 map <C-[> :NvimTreeFocus<CR>
 map <F5> :e!<CR>                    " force reload current file
-map <F6> :CtrlPClearAllCaches<CR>   " clear all CtrlP cache
 map <leader>W :w<CR>
 map <leader>w :wincmd k<CR>        " go window up
 map <leader>s :wincmd j<CR>        " go window down
@@ -153,9 +128,7 @@ map <leader>x :tabnext<CR>         " move to next tab
 map <leader>y :call system('xclip -selection clipboard', @0)<CR>  " move last yank selection to xclip
 map <leader>b :CtrlPBuffer<cr>
 map <leader>t :CtrlPTag<cr>
-"nmap <ESC> :call coc#util#float_hide() <CR>
 nmap <silent> k :call CocAction('doHover')<CR>
-"autocmd CursorHold * silent call CocActionAsync('doHover')
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -193,8 +166,6 @@ endif
 
 
 " nvimtree config
-let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
-nnoremap <C-n> :NvimTreeToggle<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
 
