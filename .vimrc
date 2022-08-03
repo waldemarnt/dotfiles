@@ -18,7 +18,7 @@ Plug 'jparise/vim-graphql'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'joshdick/onedark.vim'
-Plug 'kyazdani42/nvim-tree.lua'
+Plug 'kyazdani42/nvim-tree.lua', {'tag': 'nightly'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
 
@@ -126,15 +126,12 @@ map <leader>n :tabnew<CR>          " create a new tab
 map <leader>z :tabprevious<CR>     " move to previous tab
 map <leader>x :tabnext<CR>         " move to next tab
 map <leader>y :call system('xclip -selection clipboard', @0)<CR>  " move last yank selection to xclip
-map <leader>b :CtrlPBuffer<cr>
 map <leader>t :CtrlPTag<cr>
 nmap <silent> k :call CocAction('doHover')<CR>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-
-autocmd BufNewFile,BufRead *.yaml.hbs   set syntax=ansible
 
 set t_Co=256
 
