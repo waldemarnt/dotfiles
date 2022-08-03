@@ -7,7 +7,6 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'erickzanardo/vim-xclip'
 Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tpope/vim-unimpaired'
@@ -17,11 +16,9 @@ Plug 'bling/vim-airline'
 "Themes
 Plug 'vim-airline/vim-airline-themes'
 
-"Plug 'pangloss/vim-javascript'
 Plug 'othree/yajs.vim', {'for': 'javascript'}
 Plug 'othree/es.next.syntax.vim', {'for': 'javascript'}
 Plug 'pearofducks/ansible-vim'
-"Plug 'HerringtonDarkholme/yats.vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -37,6 +34,8 @@ Plug 'junegunn/fzf.vim'
 
 "Onedark theme
 Plug 'joshdick/onedark.vim'
+
+Plug 'kyazdani42/nvim-tree.lua'
 
 Plug 'ryanoasis/vim-devicons'
 
@@ -137,19 +136,11 @@ set noswapfile
 set nobackup
 set nowb
 
-" CtrlP to ignore
-set wildignore+=*.swp,*.pyc
-let g:ctrlp_show_hidden = 1
-
-" NerdTree show hidden files
-let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.swp$', '\.pyc$']
 
 " Short cuts:
 let mapleader=","
 map ; :Files<CR>
-map <C-]> :NERDTreeToggle<CR>
-map <C-F> :NERDTreeFind<CR>         " Open NERDTree and focus on current file
+map <C-[> :NvimTreeFocus<CR>
 map <F5> :e!<CR>                    " force reload current file
 map <F6> :CtrlPClearAllCaches<CR>   " clear all CtrlP cache
 map <leader>W :w<CR>
@@ -204,6 +195,14 @@ let g:airline_powerline_fonts = 1
 if (has("termguicolors"))
  set termguicolors
 endif
+
+
+" nvimtree config
+let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
+nnoremap <C-n> :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>
+
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
