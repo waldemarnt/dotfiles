@@ -1,22 +1,14 @@
 set runtimepath+=~/.vim,~/.vim/after
 set packpath+=~/.vim
 source ~/.vimrc
-lua << EOF
-require("nvim-tree").setup({
-  sort_by = "case_sensitive",
-  view = {
-    adaptive_size = true,
-    mappings = {
-      list = {
-        { key = "u", action = "dir_up" },
-      },
-    },
-  },
-  renderer = {
-    group_empty = true,
-  },
-  filters = {
-    dotfiles = true,
-  },
-})
+lua<<EOF
+require'nvim-tree'.setup {
+  remove_keymaps = {"<C-]>"},
+  git = {
+      enable = true,
+      ignore = false,
+      show_on_dirs = true,
+      timeout = 400
+    }
+}
 EOF

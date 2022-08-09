@@ -18,7 +18,7 @@ Plug 'jparise/vim-graphql'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'joshdick/onedark.vim'
-Plug 'kyazdani42/nvim-tree.lua', {'tag': 'nightly'}
+Plug 'kyazdani42/nvim-tree.lua'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
 call plug#end()
@@ -110,7 +110,7 @@ set nowb
 " Short cuts:
 let mapleader=","
 map ; :Files<CR>
-map <C-[> :NvimTreeToggle<CR>
+map <C-]> :NvimTreeToggle<CR>
 map <F5> :e!<CR>                    " force reload current file
 map <leader>W :w<CR>
 map <leader>w :wincmd k<CR>        " go window up
@@ -159,11 +159,6 @@ let g:airline_powerline_fonts = 1
 if (has("termguicolors"))
  set termguicolors
 endif
-
-
-" nvimtree config
-nnoremap <leader>r :NvimTreeRefresh<CR>
-nnoremap <leader>n :NvimTreeFindFile<CR>
 
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
