@@ -21,12 +21,17 @@ Plug 'joshdick/onedark.vim'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
+Plug 'github/copilot.vim'
+Plug 'mfussenegger/nvim-dap'
+Plug 'puremourning/vimspector'
+Plug 'CopilotC-Nvim/CopilotChat.nvim'
 call plug#end()
-
 
 " Status bar plugin (vim-airline)
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
+
+let g:python3_host_prog = '/opt/homebrew/bin/python3'
 
 " fzf stays in the screen instead of in a floating window
 "let g:fzf_layout = { 'down': '~40%' }
@@ -132,6 +137,13 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+
+"Copilot
+nnoremap <leader>ccb <cmd>CopilotChatBuffer<cr>
+nnoremap <leader>cce <cmd>CopilotChatExplain<cr>
+nnoremap <leader>cct <cmd>CopilotChatTests<cr>
+xnoremap <leader>ccv :CopilotChatVisual<cr>
+xnoremap <leader>ccx :CopilotChatInPlace<cr>
 
 set t_Co=256
 
